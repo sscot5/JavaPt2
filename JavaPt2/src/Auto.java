@@ -37,7 +37,7 @@ public class Auto {
      * @param milesDriven  - the number of miles driven
      * @param gallonsOfGas - the number of gallons of gas
      * 
-     *                     function: allows client to set beginning balues for
+     *                     function: allows client to set beginning values for
      *                     model, milesDriven, and gallonsOfGas
      */
     public Auto(String startModel, int startMilesDriven, double startGallonsOfGas) {
@@ -107,7 +107,7 @@ public class Auto {
     }
 
     /**
-     * Setter for the nnumber of gallons of gas
+     * Setter for the number of gallons of gas
      * 
      * @param gallonsOfGas
      */
