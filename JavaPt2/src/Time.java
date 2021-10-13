@@ -38,7 +38,7 @@ public class Time {
      *                format. validates hours is between 0 - 23 and minutes is
      *                between 0 - 59; if not sets time to midnight
      */
-    public Auto(int hrs, int mins) {
+    public Time(int hrs, int mins) {
         setHours(hours);
         setMinutes(minutes);
     }
@@ -52,9 +52,16 @@ public class Time {
      *                between 0 - 59; and String is either AM or PM; if not it sets
      *                the time to midnight
      */
-    public Auto(int hrs, int mins, String ampm) {
-        setHours(hours);
-        setMinutes(minutes);
+    public Time(int hrs, int mins, String ampm) {
+        setMinutes(mins);
+        if (ampm.toUpperCase().equals("AM")) {
+            setHours(hrs);
+        } else if (ampm.toUpperCase().equals("PM")) {
+            setHours((hrs + 12) % 24);
+        } else {
+            setHours(0);
+            setMinutes(0);
+        }
     }
 
     /**
@@ -104,8 +111,12 @@ public class Time {
      * 
      * function: checks to see if this time is equal to another time
      */
-    @Override
-    public boolean equals() {
+    public boolean equals(Object o) {
+        if (o instanceof Time) {
+            boolean areHoursEqual = this.hours == ((Time) o).getHours();
+            boolean areMinutesEqual = this.minutes == ((Time) o).getMinutes();
+            return areHoursEqual && areMinutesEqual;
+        }
         return false;
     }
 
@@ -121,7 +132,17 @@ public class Time {
     }
 
     /**
-     * get12HourTime – returns a String with the time in the form hh:mm AM or hh:mm
-     * PM
+     * Converts the 24-hour time format to a 12-hour time format
+     * 
+     * @return a String with the time in the form hh:mm AM or hh:mm PM
      */
+    public String get12HourTime() {
+        int hrs = this.hours;
+        String ampm = "AM";
+        if (hrs > 12) {
+            hrs -= 12;
+            ampm = "PM";
+        }
+        return hrs + ":" + minutes + " " + ampm;
+    }
 }
