@@ -1,14 +1,20 @@
-import java.util.Random;
-
 public class CoffeeExpenses {
     private double[] purchases;
     private String[] dates;
 
     public static void main(String[] args) {
         CoffeeExpenses april = new CoffeeExpenses();
-        april.addPurchase(4.67);
-        april.addPurchase(5.76);
+        april.loadData();
         System.out.println(april.getTotal());
+    }
+
+    public static double getRandomDouble(int min, int max) {
+        double num = (Math.random() * (max - min)) + min;
+        return ((int) (num * 100) / 100.0);
+    }
+
+    public static int getRandomInt(int min, int max) {
+        return (int) (Math.random() * (max - min)) + min;
     }
 
     // constructor creates an empty array to add costs to it
@@ -65,19 +71,15 @@ public class CoffeeExpenses {
         }
     }
 
-    public void buyCoffee(String dates, double purchase) {
-        addDate(dates);
+    public void buyCoffee(String date, double purchase) {
+        addDate(date);
         addPurchase(purchase);
     }
 
     public void loadData() {
-        int start = 6;
-        int end = 10;
-        int rand = new Random().nextInt();
-        int daysToTrack = start + (rand * (end - start));
+        int daysToTrack = CoffeeExpenses.getRandomInt(4, 14);
         for (int i = 0; i < daysToTrack; i++) {
-            double doubleRandom = new Random().nextDouble();
-            double purch = 1.01 + (doubleRandom * (9.99 - 1.01));
+            double purch = CoffeeExpenses.getRandomDouble(2, 6);
             String day = "04-" + (i + 1) + "-2021";
             buyCoffee(day, purch);
         }
