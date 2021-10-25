@@ -4,7 +4,6 @@ public class L11_FillArray {
     public static void main(String[] args) {
         int[] array1 = { 4, 10, 15, 12, 8, 20, 100, 25, 32, 7, 28, 48 };
         method(array1, 12, 1);
-
     }
 
     public static int[] fillArray(int[] arr) {
@@ -19,6 +18,7 @@ public class L11_FillArray {
             System.out.print("Enter value or -999 to stop: ");
             input = scanner.nextInt();
         }
+
         scanner.close();
         return arr;
     }
@@ -29,6 +29,7 @@ public class L11_FillArray {
                 numOfMultiples += 1;
             }
         }
+
         System.out.println(numOfMultiples);
         return numOfMultiples;
     }
