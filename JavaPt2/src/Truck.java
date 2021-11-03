@@ -62,6 +62,6 @@ public class Truck {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Cylinders: " + cylinders + "; Manufacterer: " + manufacturer + "; Load: " + load + "; Tow: " + tow;
     }
 }
